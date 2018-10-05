@@ -1,10 +1,10 @@
 # rDoD (remote Desktop on Docker)
 
 ## Description
-Did you ever dream to move from a desk to another one without having to rebuild your environment ? To be able to access your apps from home, job, in a bus or a train ?
+Have you ever dreamed moving from a desk to another without having to rebuild your environment ? To be able to access to your apps from home, job, in the bus or in the train ?
 rDoD can be the solution for you !
 
-With rDoD you will be able to launch a full Ubuntu Desktop environment in a Docker and access it by VNC / noVNC
+With rDoD you will be able to launch a full Ubuntu Desktop environment in a Docker and access to it by VNC / noVNC
 
 
 ## Customized Versions
