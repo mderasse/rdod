@@ -1,0 +1,48 @@
+---
+# tasks file for xfce
+- name: XFCE - Install Xfce4 packages
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+    autoremove: yes
+    cache_valid_time: 3600
+    install_recommends: no
+  vars:
+    packages:
+    - xserver-xorg
+    - xserver-xorg-core
+    - xfonts-base
+    - xinit
+    - x11-xserver-utils
+    - dbus-x11
+    - xfwm4
+    - xfce4-panel
+    - xfce4-settings
+    - xfce4-session
+    - xfce4-terminal
+    - xfdesktop4
+    - xfce4-taskmanager
+    - xfce4-whiskermenu-plugin
+    - fonts-noto
+    - xfce4-statusnotifier-plugin
+    - xfce4-notifyd
+    - thunar
+    - greybird-gtk-theme
+    - xubuntu-icon-theme
+
+- name: XFCE - Remove Xfce4 useless packages
+  apt:
+    name: "{{ packages }}"
+    state: absent
+    autoremove: yes
+  vars:
+    packages:
+    - pm-utils
+    - xscreensaver
+
+- name: XFCE - Update Skeleton
+  copy:
+    src: .config
+    dest: /etc/skel
+    mode: 0644
