@@ -1,0 +1,35 @@
+---
+- name: TigerVNC - Download and Extract
+  unarchive:
+    src: https://dl.bintray.com/tigervnc/stable/tigervnc-{{ tigervnc_version }}.x86_64.tar.gz
+    dest: /
+    remote_src: yes
+    extra_opts: ["--strip-components=1"]
+
+- name: TigerVNC - Add Systemd Service
+  template:
+    src: vncserver-service.j2
+    dest: /etc/systemd/system/vncserver@:1.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: TigerVNC - Create Vnc Directory in user Skeleton
+  file:
+    path: /etc/skel/.vnc
+    state: directory
+    mode: 0755
+
+- name: TigerVNC - Create Vnc Cert Directory in user Skeleton
+  file:
+    path: /etc/skel/.vnc/certs
+    state: directory
+    mode: 0700
+
+- name: TigerVNC - Add xStartup in user Skeleton
+  template:
+    src: xstartup.j2
+    dest: /etc/skel/.vnc/xstartup
+    owner: root
+    group: root
+    mode: 0744

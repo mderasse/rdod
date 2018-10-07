@@ -1,0 +1,6 @@
+---
+# defaults file for tigervnc
+tigervnc_version: 1.9.0
+tigervnc_user: user
+# Windows manager to use such as xfce4
+tigervnc_wm_cmd: startxfce4
