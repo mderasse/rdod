@@ -1,0 +1,6 @@
+---
+# defaults file for novnc
+# Will use current development version by default. Could be v1.0.0
+novnc_version: master
+novnc_websockify_version: master
+novnc_user: user

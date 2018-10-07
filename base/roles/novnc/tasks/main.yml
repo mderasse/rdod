@@ -1,0 +1,51 @@
+---
+# tasks file for novnc
+- name: noVNC - Creating Directory
+  file:
+    path: /opt/novnc/utils/websockify
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+    recurse: yes
+
+- name: noVNC - Download and Extract noVNC
+  unarchive:
+    src: https://github.com/novnc/noVNC/archive/{{ novnc_version }}.tar.gz
+    dest: /opt/novnc
+    remote_src: yes
+    extra_opts: ["--strip-components=1"]
+    creates: /opt/novnc/vnc.html
+
+- name: noVNC - Install Websockify Dependencies
+  apt:
+    name: python-numpy
+    install_recommends: no
+
+- name: noVNC - Download and Extract Websockify
+  unarchive:
+    src: https://github.com/novnc/websockify/archive/{{ novnc_websockify_version }}.tar.gz
+    dest: /opt/novnc/utils/websockify
+    remote_src: yes
+    extra_opts: ["--strip-components=1"]
+    creates: /opt/novnc/utils/websockify/run
+
+- name: noVNC - Create index.html
+  file:
+    src: /opt/novnc/vnc.html
+    dest: /opt/novnc/index.html
+    state: link
+
+- name: noVNC - Apply Execution Permission
+  file:
+    path: /opt/novnc/utils
+    mode: 0775
+    recurse: yes
+
+- name: noVNC - Add Systemd Service
+  template:
+    src: novnc-service.j2
+    dest: /etc/systemd/system/novnc@:1.service
+    owner: root
+    group: root
+    mode: 0644

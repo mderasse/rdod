@@ -4,3 +4,4 @@
   roles:
     - role: xfce
     - role: tigervnc
+    - role: novnc
