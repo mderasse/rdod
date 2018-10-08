@@ -1,0 +1,6 @@
+---
+# defaults file for user
+user_name: user
+user_home: /home/user
+# User UID will be used in Dockerfile !!!
+user_uid: 1000

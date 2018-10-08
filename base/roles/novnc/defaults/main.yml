@@ -4,3 +4,4 @@
 novnc_version: master
 novnc_websockify_version: master
 novnc_user: user
+novnc_use_ssl: false

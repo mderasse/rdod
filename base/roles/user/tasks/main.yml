@@ -1,0 +1,11 @@
+---
+# tasks file for user
+- name: User - Create User "{{ user_name }}"
+  user:
+    name: "{{ user_name }}"
+    state: present
+    shell: /bin/bash
+    system: no
+    createhome: yes
+    home: "{{ user_home }}"
+    uid: "{{ user_uid }}"

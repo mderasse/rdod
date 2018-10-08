@@ -1,14 +1,16 @@
-[Unit]
-Description=HTML5 VNC Proxy (NOVNC)
-After=syslog.target network.target
-
-[Service]
-Type=simple
-User={{ novnc_user }}
-PAMName=login
-PIDFile=/home/%u/.vnc/%H%i.pid
-ExecStart=/usr/local/share/noVNC/utils/launch.sh --vnc localhost:5901 --listen 8001
-/opt/novnc/utils/launch.sh --vnc localhost:5901 --listen 5911 --cert $HOME/.vnc/certs/fullcert.pem --ssl-only
-
-[Install]
-WantedBy=multi-user.target
+[program:novnc]
+command=/usr/bin/launchnovnc
+autostart=true
+autorestart=true
+startsecs=30
+startretries=10
+user={{ novnc_user }}
+stdout_logfile=/home/{{ novnc_user }}/.vnc/novnc-stdout.log
+stdout_logfile_maxbytes=10MB
+stdout_logfile_backups=2
+stdout_capture_maxbytes=10MB
+stderr_logfile=/home/{{ novnc_user }}/.vnc/novnc-stderr.log
+stderr_logfile_maxbytes=10MB
+stderr_logfile_backups=2
+stderr_capture_maxbytes=10MB
+environment=HOME="/home/{{ novnc_user }}", USER="{{ novnc_user }}"

@@ -1,0 +1,12 @@
+---
+# tasks file for supervisor
+- name: Supervisor - Install Supervisor
+  apt:
+    name: supervisor
+    install_recommends: no
+
+- name: Supervisor - Set supervisor config
+  copy:
+    src: supervisord.conf
+    dest: /etc/supervisor/supervisord.conf
+    mode: 0744

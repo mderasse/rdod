@@ -1,16 +1,16 @@
-[Unit]
-Description=Remote desktop service (VNC)
-After=syslog.target network.target
-
-[Service]
-Type=simple
-User={{ tigervnc_user }}
-PAMName=login
-PIDFile=/home/%u/.vnc/%H%i.pid
-ExecStartPre=/usr/bin/dbus-launch
-ExecStartPre=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
-ExecStart=/usr/bin/vncserver %i -geometry 1920x1080 -SecurityTypes X509Vnc -X509Cert /home/%u/.vnc/certs/fullchain.pem -X509Key /home/%u/.vnc/certs/privkey.pem -alwaysshared -fg
-ExecStop=/usr/bin/vncserver -kill %i
-
-[Install]
-WantedBy=multi-user.target
+[program:vnc]
+command=/usr/bin/launchvnc 1
+autostart=true
+autorestart=true
+startsecs=30
+startretries=10
+user={{ tigervnc_user }}
+stdout_logfile=/home/{{ tigervnc_user }}/.vnc/vnc-stdout.log
+stdout_logfile_maxbytes=10MB
+stdout_logfile_backups=2
+stdout_capture_maxbytes=10MB
+stderr_logfile=/home/{{ tigervnc_user }}/.vnc/vnc-stderr.log
+stderr_logfile_maxbytes=10MB
+stderr_logfile_backups=2
+stderr_capture_maxbytes=10MB
+environment=HOME="/home/{{ tigervnc_user }}", USER="{{ tigervnc_user }}"

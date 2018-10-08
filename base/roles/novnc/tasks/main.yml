@@ -42,10 +42,18 @@
     mode: 0775
     recurse: yes
 
-- name: noVNC - Add Systemd Service
+- name: noVNC - Add Supervisor Service
   template:
     src: novnc-service.j2
-    dest: /etc/systemd/system/novnc@:1.service
+    dest: /etc/supervisor/conf.d/novnc@:1.conf
     owner: root
     group: root
     mode: 0644
+
+- name: noVNC - Add launch noVNC binary
+  template:
+    src: launchnovnc.j2
+    dest: /usr/bin/launchnovnc
+    owner: root
+    group: root
+    mode: 0755

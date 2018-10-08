@@ -25,11 +25,9 @@
     - xfce4-taskmanager
     - xfce4-whiskermenu-plugin
     - fonts-noto
-    - xfce4-statusnotifier-plugin
     - xfce4-notifyd
     - thunar
     - greybird-gtk-theme
-    - xubuntu-icon-theme
 
 - name: XFCE - Remove Xfce4 useless packages
   apt:
