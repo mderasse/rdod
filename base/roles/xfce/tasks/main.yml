@@ -81,8 +81,8 @@
   shell: |
     ./configure
     make
-    sudo make install
-    sudo make icon-caches
+    make install
+    make icon-caches
     exit 0
   args:
     chdir: /tmp/elementary-xfce-master
