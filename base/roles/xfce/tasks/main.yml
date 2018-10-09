@@ -27,8 +27,72 @@
     - fonts-noto
     - xfce4-notifyd
     - thunar
-    - greybird-gtk-theme
 
+- name: XFCE - Install Dependencies
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+    autoremove: yes
+    cache_valid_time: 3600
+    install_recommends: no
+  vars:
+    packages:
+    - automake
+    - autoconf
+    - libgdk-pixbuf2.0-dev
+    - libglib2.0-bin
+    - librsvg2-dev
+    - ruby-sass
+    - sassc
+    - optipng
+    - libgtk-3-dev
+    - gcc
+
+# Manage greybird
+- name: XFCE - Untar Greybird
+  unarchive:
+    src: https://github.com/shimmerproject/Greybird/archive/master.tar.gz
+    dest: /tmp
+    remote_src: yes
+
+- name: XFCE - Compile and Install Greybird
+  shell: |
+    ./autogen.sh
+    make
+    make install
+    exit 0
+  args:
+    chdir: /tmp/Greybird-master
+
+- name: XFCE - Delete Greybird Sources
+  file:
+    state: absent
+    path: "/tmp/Greybird-master"
+
+# Manage Elementary icon pack
+- name: XFCE - Untar Elementary
+  unarchive:
+    src: https://github.com/shimmerproject/elementary-xfce/archive/master.tar.gz
+    dest: /tmp
+    remote_src: yes
+
+- name: XFCE - Compile and Install Elementary
+  shell: |
+    ./configure
+    make
+    sudo make install
+    sudo make icon-caches
+    exit 0
+  args:
+    chdir: /tmp/elementary-xfce-master
+
+- name: XFCE - Delete Elementary Sources
+  file:
+    state: absent
+    path: "/tmp/elementary-xfce-master"
+
+# Clean a bit the package we don't need anymore
 - name: XFCE - Remove Xfce4 useless packages
   apt:
     name: "{{ packages }}"
@@ -38,6 +102,16 @@
     packages:
     - pm-utils
     - xscreensaver
+    - automake
+    - autoconf
+    - libgdk-pixbuf2.0-dev
+    - libglib2.0-bin
+    - librsvg2-dev
+    - ruby-sass
+    - sasssc
+    - optipng
+    - libgtk-3-dev
+    - gcc
 
 - name: XFCE - Update Skeleton
   copy:
