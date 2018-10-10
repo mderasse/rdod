@@ -61,7 +61,6 @@
     ./autogen.sh
     make
     make install
-    exit 0
   args:
     chdir: /tmp/Greybird-master
 
@@ -83,7 +82,6 @@
     make
     make install
     make icon-caches
-    exit 0
   args:
     chdir: /tmp/elementary-xfce-master
 
