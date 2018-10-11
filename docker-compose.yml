@@ -1,0 +1,12 @@
+version: '3'
+services:
+  desktop:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5901:5901"
+      - "5911:5911"
+    environment:
+      - RESOLUTION=1920x1080
+      - USE_SSL=false

@@ -7,8 +7,9 @@ fi
 
 /usr/bin/dbus-launch
 /bin/sh -c '/usr/bin/vncserver -kill $VNCDISPLAY > /dev/null 2>&1 || :'
-{% if tigervnc_use_ssl %}
-/usr/bin/vncserver :$VNCDISPLAY -geometry 1920x1080 -SecurityTypes X509Vnc -X509Cert $HOME/.vnc/certs/fullchain.pem -X509Key $HOME/.vnc/certs/privkey.pem -alwaysshared -fg
-{% else %}
-/usr/bin/vncserver :$VNCDISPLAY -geometry 1920x1080 -alwaysshared -fg
-{% endif %}
+if [[ $USE_SSL == "true" ]];
+then
+    /usr/bin/vncserver :$VNCDISPLAY -geometry $RESOLUTION -SecurityTypes X509Vnc -X509Cert $HOME/.vnc/certs/fullchain.pem -X509Key $HOME/.vnc/certs/privkey.pem -alwaysshared -fg
+else
+    /usr/bin/vncserver :$VNCDISPLAY -geometry $RESOLUTION -alwaysshared -fg
+fi
