@@ -1,4 +1,4 @@
-version: '3'
+version: '3.1'
 services:
   desktop:
     build:
@@ -10,3 +10,12 @@ services:
     environment:
       - RESOLUTION=1920x1080
       - USE_SSL=false
+    secrets:
+      - VNC_RW_PASSWORD
+      - VNC_RO_PASSWORD
+
+secrets:
+  VNC_RW_PASSWORD:
+    file: ./secrets/VNC_RW_PASSWORD
+  VNC_RO_PASSWORD:
+    file: ./secrets/VNC_RO_PASSWORD
