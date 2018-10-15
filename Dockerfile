@@ -5,13 +5,11 @@ LABEL maintainer="Matthieu DERASSE <github@derasse.fr>"
 
 # ENV Configuration
 ENV DEBIAN_FRONTEND=noninteractive \
-    VNC_PORT=5901 \
-    NO_VNC_PORT=5911 \
     USE_SSL=false \
     RESOLUTION=1920x1080
 
 # Expose our VNC AND HTML VNC server
-EXPOSE $VNC_PORT $NO_VNC_PORT
+EXPOSE 5901 5911
 
 # Installing ansible in one step to keep real step in the Build
 RUN apt-get update && \
@@ -28,12 +26,13 @@ COPY base /opt/rdod/base
 # Launching System Installation
 RUN ansible-playbook /opt/rdod/base/install.yml
 
+WORKDIR /home/user
+
 COPY launch.sh /opt/rdod/launch.sh
 RUN chmod +x /opt/rdod/launch.sh && \
     chown -R user:user /var/log/supervisor
 
 USER 1000
-WORKDIR /home/user
 
 # Entrypoint
 CMD ["/opt/rdod/launch.sh"]
