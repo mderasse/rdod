@@ -16,7 +16,7 @@
   file:
     path: /etc/skel/.vnc/certs
     state: directory
-    mode: 0700
+    mode: 0744
 
 - name: TigerVNC - Add xStartup in user Skeleton
   template:

@@ -26,13 +26,12 @@ COPY base /opt/rdod/base
 # Launching System Installation
 RUN ansible-playbook /opt/rdod/base/install.yml
 
-WORKDIR /home/user
-
 COPY launch.sh /opt/rdod/launch.sh
 RUN chmod +x /opt/rdod/launch.sh && \
     chown -R user:user /var/log/supervisor
 
 USER 1000
+WORKDIR /home/user
 
 # Entrypoint
 CMD ["/opt/rdod/launch.sh"]

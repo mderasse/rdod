@@ -4,12 +4,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - ./home:/home/user
     ports:
       - "5901:5901"
       - "5911:5911"
     environment:
       - RESOLUTION=1920x1080
-      - USE_SSL=false
+      - USE_SSL=true
     secrets:
       - VNC_RW_PASSWORD
       - VNC_RO_PASSWORD

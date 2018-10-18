@@ -1,8 +1,6 @@
 #!/bin/bash
-
-if [[ $USE_SSL == "true" ]];
-then
-    /opt/novnc/utils/launch.sh --vnc localhost:5901 --listen 5911 --cert $HOME/.vnc/certs/fullcert.pem --ssl-only
+if [ $USE_SSL = "true" ]; then
+    /opt/novnc/utils/launch.sh --vnc localhost:5906 --listen 5911 --cert $HOME/.vnc/certs/fullcert.pem --ssl-only
 else
     /opt/novnc/utils/launch.sh --vnc localhost:5901 --listen 5911
 fi

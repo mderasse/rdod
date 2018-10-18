@@ -7,9 +7,10 @@ fi
 
 /usr/bin/dbus-launch
 /bin/sh -c '/usr/bin/vncserver -kill $VNCDISPLAY > /dev/null 2>&1 || :'
-if [[ $USE_SSL == "true" ]];
-then
-    /usr/bin/vncserver :$VNCDISPLAY -geometry $RESOLUTION -SecurityTypes X509Vnc -X509Cert $HOME/.vnc/certs/fullchain.pem -X509Key $HOME/.vnc/certs/privkey.pem -alwaysshared -fg
+if [ $USE_SSL = "true" ]; then
+    /usr/bin/vncserver :$VNCDISPLAY -geometry $RESOLUTION -SecurityTypes X509Vnc -X509Cert $HOME/.vnc/certs/cert.crt -X509Key $HOME/.vnc/certs/privkey.pem -alwaysshared &
+    sleep 10
+    /usr/bin/x0vncserver -display :$VNCDISPLAY -rfbport $((5905 + $VNCDISPLAY)) -passwordfile $HOME/.vnc/passwd -HostsFile $HOME/.vnc/hosts -alwaysshared
 else
     /usr/bin/vncserver :$VNCDISPLAY -geometry $RESOLUTION -alwaysshared -fg
 fi
