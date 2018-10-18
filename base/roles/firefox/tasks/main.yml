@@ -1,2 +1,21 @@
 ---
 # tasks file for firefox
+- name: Firefox - Install Firefox and dependencies
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+    autoremove: yes
+    cache_valid_time: 3600
+    install_recommends: no
+  vars:
+    packages:
+    - firefox
+
+- name: Firefox - Add Shortcut on Desktop
+  copy:
+    src: /usr/share/applications/firefox.desktop
+    dest: /etc/skel/Desktop/firefox.desktop
+    owner: user
+    group: user
+    mode: 0755

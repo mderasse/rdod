@@ -1,5 +1,14 @@
 ---
 # tasks file for user
+- name: User - Creating Desktop Directory
+  file:
+    path: /etc/skel/Desktop
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+    recurse: yes
+
 - name: User - Create User "{{ user_name }}"
   user:
     name: "{{ user_name }}"

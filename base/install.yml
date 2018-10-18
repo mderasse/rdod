@@ -8,3 +8,4 @@
     - role: tigervnc
     - role: novnc
     - role: user
+    - role: firefox
