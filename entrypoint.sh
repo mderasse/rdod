@@ -5,6 +5,9 @@
 # ------------------------------------------------------------------------------
 rm -rf $HOME/.vnc/*.pid &> /dev/null
 rm -rf $HOME/.vnc/*.log &> /dev/null
+rm -rf $HOME/.vnc/certs/*
+rm -rf /tmp/.X*
+
 rsync -a -v --ignore-existing /etc/skel/ $HOME/  &> /dev/null
 
 if [ "$(stat -c '%U' $HOME)" = "root" ]; then
@@ -57,7 +60,13 @@ VNC_ADDRESS=$(hostname -i)
 echo "----------- Connection Informations -----------"
 echo " You can connect to rDoD with : "
 echo "   - VNC Viewer: $VNC_ADDRESS:5901"
-echo -e "   - noVNC: http://$VNC_ADDRESS:5911/\n"
+
+if [ "$USE_SSL" = "true" ]; then
+  echo -e "   - noVNC: https://$VNC_ADDRESS:5911/\n"
+else
+  echo -e "   - noVNC: http://$VNC_ADDRESS:5911/\n"
+fi
+
 echo -e " Port might differ base on your docker configuration\n"
 
 echo " Credentials: "

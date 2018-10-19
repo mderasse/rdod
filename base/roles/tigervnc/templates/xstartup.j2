@@ -1,4 +1,7 @@
 #!/bin/sh
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
+xset -dpms &
+xset s noblank &
+xset s off &
 exec {{ tigervnc_wm_cmd }}
