@@ -20,7 +20,11 @@ With rDoD you will be able to launch a full Ubuntu Desktop environment in a Dock
 
 ## Launch rDoD
 ### 1) Set Up your rDoD
-Work In Progress
+rDod can be launch as it but you might want to customize. To do so, a few **environment variables** are available such as :
+* **RESOLUTION**: Screen resolution of the desktop initialized by VNC Server (Default: 1920*1080)
+* **USE_SSL**: Enable/Disable SSL Encryption between VNC Client <-> Server. If set to true, Certificate will be auto-generated at launch (Default: false)
+* **VNC_RW_PASSWORD**: Password for log in as a Read-Write user. If not set, the password will be auto-generated at launch (Optional)
+* **VNC_RO_PASSWORD**: Password for log in as a Read-Only user. If not set, the password will be auto-generated at launch (Optional)
 
 ### 2) Start rDoD
 Work In Progress
@@ -32,5 +36,4 @@ Work In Progress
 Work In Progress
 
 ## Known Issues
-1) Firefox Crash randomly
-2) noVNC does not handle well all the keyboard key
+1) noVNC does not handle well all the keyboard key
