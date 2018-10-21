@@ -1,5 +1,16 @@
 # rDoD (remote Desktop on Docker)
 
+## Quick reference
+#### Where to get help:
+[Github Issues Tracker](https://github.com/mderasse/rdod/issues)
+
+#### Where to file issues:
+[Github issues Tracker](https://github.com/mderasse/rdod/issues)
+
+#### Maintained by:
+Matthieu Derasse
+
+
 ## Description
 Have you ever dreamed moving from a desk to another without having to rebuild your environment ? To be able to access to your apps from home, job, in the bus or in the train ?
 rDoD can be the solution for you !
@@ -61,7 +72,20 @@ You might also want to use those parameter :
 * **-e** : set a environment variable. (-e USE_SSL='true')
 
 ### 3) Access to rDoD
-Work In Progress
+rDoD currently provide 2 different ways of access.
+#### VNC
+In order to acces to rDoD by using VNC you will have to install the TigerVNC viewer.  
+You can find the different binary depending of your OS on that link:  [TigerVNC Viewer](https://bintray.com/tigervnc/stable/tigervnc/1.9.0)
+
+After the installation done you will have to launch the client and connect to :
+YOUR_IP:5901
+
+#### noVNC
+noVNC is a HTML5 Client. You can access it directly by using your favorite Web Browser
+[http://YOUR_IP:5911](http://YOUR_IP:5911)
+
+Don't forget to change HTTP to HTTPS is USE_SSL is enabled
+
 
 ## Create you own Customized Version
 Work In Progress

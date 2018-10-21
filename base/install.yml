@@ -7,5 +7,6 @@
     - role: xfce
     - role: tigervnc
     - role: novnc
+    - role: packages
     - role: user
     - role: firefox

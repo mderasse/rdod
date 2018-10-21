@@ -1,0 +1,19 @@
+---
+- name: Packages - Install Extra packages
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+    autoremove: yes
+    cache_valid_time: 3600
+    install_recommends: no
+  vars:
+    packages:
+    - iputils-ping
+    - net-tools
+    - curl
+    - vim
+    - wget
+    - openssh-client
+    - tar
+    - zip
