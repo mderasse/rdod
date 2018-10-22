@@ -1,0 +1,18 @@
+---
+# tasks file for atom
+- name: Atom - Download and Install Deb package
+  apt:
+    deb: https://atom-installer.github.com/v1.31.2/atom-amd64.deb
+    state: present
+    update_cache: yes
+    autoremove: yes
+    cache_valid_time: 3600
+    install_recommends: no
+
+- name: Atom - Add Shortcut on Desktop
+  copy:
+    src: /usr/share/applications/atom.desktop
+    dest: /etc/skel/Desktop/atom.desktop
+    owner: user
+    group: user
+    mode: 0755

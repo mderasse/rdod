@@ -1,0 +1,58 @@
+---
+- name: Postman - Install dependancies
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+    autoremove: yes
+    cache_valid_time: 3600
+    install_recommends: no
+  vars:
+    packages:
+    - libasound2
+    - libnss3
+    - libgconf-2-4
+    - libxss1
+    - libxtst6
+
+- name: Postman - Creating Directory
+  file:
+    path: /opt/postman
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+    recurse: yes
+
+- name: Postman - Download and Extract
+  unarchive:
+    src: https://dl.pstmn.io/download/latest/linux64
+    dest: /opt/postman
+    remote_src: yes
+    extra_opts: ["--strip-components=1"]
+    creates: /opt/postman/Postman
+
+- name: Postman - Create Binary Sym link
+  file:
+    src: /opt/postman/Postman
+    dest: /usr/bin/postman
+    owner: root
+    group: root
+    mode: 0775
+    state: link
+
+- name: Postman - Add Shortcut in Menu
+  copy:
+    src: postman.desktop
+    dest: /usr/share/applications/postman.desktop
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Postman - Add Shortcut on Desktop
+  copy:
+    src: /usr/share/applications/postman.desktop
+    dest: /etc/skel/Desktop/postman.desktop
+    owner: user
+    group: user
+    mode: 0755

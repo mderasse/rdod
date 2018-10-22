@@ -84,11 +84,29 @@ YOUR_IP:5901
 noVNC is a HTML5 Client. You can access it directly by using your favorite Web Browser
 [http://YOUR_IP:5911](http://YOUR_IP:5911)
 
-Don't forget to change HTTP to HTTPS is USE_SSL is enabled
+Don't forget to change HTTP to HTTPS is USE_SSL is enabled.
 
 
 ## Create you own Customized Version
-Work In Progress
+rDoD is made in a way that it's really easy to extend it.  
+Do to so you will have to create a Dockerfile like the following one:
+```
+FROM mderasse/rdod:latest
+
+LABEL maintainer="Matthieu DERASSE <github@derasse.fr>"
+
+# Back to Root
+USER 0
+
+# Configure Custom System
+COPY ....
+RUN ....
+
+# Back to User
+USER 1000
+```
+
+Please, take a look at the customs directory, that can be a good source of inspiration. Feel free to share your version by creating a pull Request!
 
 ## Known Issues
 1) noVNC does not handle well all the keyboard key
