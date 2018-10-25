@@ -1,0 +1,20 @@
+---
+# tasks file for devtools
+- name: DevTools - Install few usefull tools for developer
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+    autoremove: yes
+    cache_valid_time: 3600
+    install_recommends: no
+  vars:
+    packages:
+    - jq
+    - git
+    - subversion
+    - diffutils
+    - pwgen
+    - tmux
+    - curl
+    - build-essential

@@ -1,0 +1,21 @@
+---
+# tasks file for geany
+- name: Geany - Install Geany
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+    autoremove: yes
+    cache_valid_time: 3600
+    install_recommends: no
+  vars:
+    packages:
+    - geany
+
+- name: Geany - Add Shortcut on Desktop
+  copy:
+    src: /usr/share/applications/geany.desktop
+    dest: /etc/skel/Desktop/geany.desktop
+    owner: user
+    group: user
+    mode: 0755
