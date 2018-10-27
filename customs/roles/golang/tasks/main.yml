@@ -9,9 +9,9 @@
     mode: 0775
     recurse: yes
 
-- name: GO - Download and Extract Go 1.11.1
+- name: GO - Download and Extract Go {{ golang_version }}
   unarchive:
-    src: https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz
+    src: https://dl.google.com/go/go{{ golang_version }}.linux-amd64.tar.gz
     dest: /usr/local/go
     remote_src: yes
     extra_opts: ["--strip-components=1"]

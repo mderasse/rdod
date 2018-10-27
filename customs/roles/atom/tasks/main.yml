@@ -2,7 +2,7 @@
 # tasks file for atom
 - name: Atom - Download and Install Deb package
   apt:
-    deb: https://atom-installer.github.com/v1.31.2/atom-amd64.deb
+    deb: https://atom.io/download/deb
     state: present
     update_cache: yes
     autoremove: yes

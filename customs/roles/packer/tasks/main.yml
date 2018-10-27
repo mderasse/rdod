@@ -1,0 +1,31 @@
+---
+# tasks file for packer
+- name: Packer - Download and Extract Packer {{ packer_version }}
+  unarchive:
+    src: https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_amd64.zip
+    dest: /usr/bin
+    remote_src: yes
+    creates: /usr/bin/packer
+
+- name: Packer - Set binary executable
+  file:
+    path: /usr/bin/packer
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Packer - Download Packer vSphere Clone {{ packer_vsphere_version }}
+  get_url:
+    url: https://github.com/jetbrains-infra/packer-builder-vsphere/releases/download/v{{ packer_vsphere_version }}/packer-builder-vsphere-clone.linux
+    dest: /usr/bin/packer-builder-vsphere-clone.linux
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Packer - Download Packer vSphere Iso {{ packer_vsphere_version }}
+  get_url:
+    url: https://github.com/jetbrains-infra/packer-builder-vsphere/releases/download/v{{ packer_vsphere_version }}/packer-builder-vsphere-iso.linux
+    dest: /usr/bin/packer-builder-vsphere-iso.linux
+    mode: 0755
+    owner: root
+    group: root

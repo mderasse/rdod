@@ -1,0 +1,15 @@
+---
+# tasks file for terraform
+- name: Terraform - Download and Extract Terraform {{ terraform_version }}
+  unarchive:
+    src: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
+    dest: /usr/bin
+    remote_src: yes
+    creates: /usr/bin/terraform
+
+- name: Terraform - Set binary executable
+  file:
+    path: /usr/bin/terraform
+    owner: root
+    group: root
+    mode: 0755
