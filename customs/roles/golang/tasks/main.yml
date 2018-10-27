@@ -1,0 +1,56 @@
+---
+# tasks file for golang
+- name: GO - Creating Binary Directory
+  file:
+    path: /usr/local/go
+    state: directory
+    owner: root
+    group: root
+    mode: 0775
+    recurse: yes
+
+- name: GO - Download and Extract Go 1.11.1
+  unarchive:
+    src: https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz
+    dest: /usr/local/go
+    remote_src: yes
+    extra_opts: ["--strip-components=1"]
+    creates: /usr/local/go/bin/go
+
+- name: GO - Creating User Directory
+  file:
+    path: /etc/skel/go/src
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+    recurse: yes
+
+- name: Go - Creating Bashrc.d Directory
+  file:
+    path: /etc/bashrc.d
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: GO - Custom Bashrc
+  blockinfile:
+    path: /etc/bash.bashrc
+    block: |
+      if [ -d /etc/bashrc.d ]; then
+        for i in /etc/bashrc.d/*.sh; do
+          if [ -r $i ]; then
+            . $i
+          fi
+        done
+        unset i
+      fi
+
+- name: GO - Create Environment Variable
+  copy:
+    src: golang.sh
+    dest: /etc/bashrc.d/golang.sh
+    owner: root
+    group: root
+    mode: 0644

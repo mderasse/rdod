@@ -2,6 +2,7 @@ version: '3.1'
 services:
   desktop:
     image: mderasse/rdod:latest
+    shm_size: 1g
     volumes:
       - ./home:/home/user
     ports:
