@@ -1,13 +1,17 @@
 # rDoD (remote Desktop on Docker)
 
 ## Quick reference
-#### Where to get help:
+
+#### Where to get help
+
 [Github Issues Tracker](https://github.com/mderasse/rdod/issues)
 
-#### Where to file issues:
+#### Where to file issues
+
 [Github issues Tracker](https://github.com/mderasse/rdod/issues)
 
-#### Maintained by:
+#### Maintained by
+
 Matthieu Derasse
 
 
