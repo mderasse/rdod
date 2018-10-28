@@ -2,7 +2,7 @@
 
 ## Quick reference
 
-#### Where to get help
+#### Where to get help
 
 [Github Issues Tracker](https://github.com/mderasse/rdod/issues)
 
@@ -10,7 +10,7 @@
 
 [Github issues Tracker](https://github.com/mderasse/rdod/issues)
 
-#### Maintained by
+#### Maintained by
 
 Matthieu Derasse
 
