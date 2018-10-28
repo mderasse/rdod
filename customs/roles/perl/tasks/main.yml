@@ -1,0 +1,15 @@
+---
+# tasks file for perl
+- name: Perl - Install Perl and dependencies
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+    autoremove: yes
+    cache_valid_time: 3600
+  vars:
+    packages:
+    - perl
+    - perlconsole
+    - python3-pip
+    - python-pip

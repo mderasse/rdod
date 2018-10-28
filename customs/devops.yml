@@ -6,4 +6,5 @@
     - role: golang
     - role: packer
     - role: terraform
-    
+    - role: python
+    - role: perl

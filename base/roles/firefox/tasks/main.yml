@@ -11,6 +11,7 @@
   vars:
     packages:
     - firefox
+    - flashplugin-installer
 
 - name: Firefox - Add Shortcut on Desktop
   copy:

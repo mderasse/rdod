@@ -1,5 +1,6 @@
 ---
-- name: Packages - Install Extra packages
+# tasks file for python
+- name: Python - Install Python and dependencies
   apt:
     name: "{{ packages }}"
     state: present
@@ -9,13 +10,7 @@
     install_recommends: no
   vars:
     packages:
-    - iputils-ping
-    - net-tools
-    - curl
-    - vim
-    - wget
-    - openssh-client
-    - tar
-    - zip
-    - unzip
-    - telnet
+    - python2.7
+    - python3.7
+    - python3-pip
+    - python-pip
