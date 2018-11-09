@@ -18,3 +18,4 @@
     - tmux
     - curl
     - build-essential
+    - genisoimage
