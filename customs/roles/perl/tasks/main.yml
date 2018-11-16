@@ -11,5 +11,3 @@
     packages:
     - perl
     - perlconsole
-    - python3-pip
-    - python-pip
