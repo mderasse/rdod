@@ -4,6 +4,7 @@
 
   roles:
     - role: atom
+    - role: vscode
     - role: postman
     - role: geany
     - role: devtools
