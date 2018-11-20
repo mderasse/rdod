@@ -22,7 +22,7 @@ rDoD can be the solution for you !
 With rDoD you will be able to launch a full Ubuntu Desktop environment in a Docker and access to it by VNC / noVNC
 
 
-## Customized Versions
+## Default Versions
 ### rDoD
 * Desktop environment [**Xfce4**](http://www.xfce.org)
 * VNC Server [**TigerVNC**](https://tigervnc.org/) (default VNC port `5901`)
@@ -32,6 +32,9 @@ With rDoD you will be able to launch a full Ubuntu Desktop environment in a Dock
 * Tools:
   * openssh-client
   * Default Network Tools
+
+## Customized Versions
+[List of Customized Versions](https://github.com/mderasse/rdod/tree/master/customs)
 
 ## Launch rDoD
 ### 1) Set Up your rDoD
