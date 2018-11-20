@@ -23,7 +23,7 @@ With rDoD you will be able to launch a full Ubuntu Desktop environment in a Dock
 
 
 ## Default Versions
-### rDoD
+### rDoD (Image Tag: latest)
 * Desktop environment [**Xfce4**](http://www.xfce.org)
 * VNC Server [**TigerVNC**](https://tigervnc.org/) (default VNC port `5901`)
 * HTML5 VNC Client [**noVNC**](https://github.com/novnc/noVNC) (default http port `5911`)
