@@ -10,7 +10,7 @@ services:
       - "5911:5911"
     environment:
       - RESOLUTION=1920x1080
-      - USE_SSL=true
+      - USE_SSL=false
     secrets:
       - VNC_RW_PASSWORD
       - VNC_RO_PASSWORD
