@@ -13,12 +13,11 @@ EXPOSE 5901 5911
 
 # Installing ansible in one step to keep real step in the Build
 RUN apt-get update && \
-    apt-get install -qq --no-install-recommends -y apt-utils && \
+    apt-get install -qq --no-install-recommends -y apt-utils software-properties-common && \
     apt-get install -qq --no-install-recommends -y gnupg dirmngr && \
-    echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main" > /etc/apt/sources.list.d/ansible.list && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367 && \
+    apt-add-repository ppa:ansible/ansible && \
     apt-get update && \
-    apt-get install -qq --no-install-recommends -y ansible
+    apt-get install -qq -y ansible
 
 # Configure Default System
 COPY base /opt/rdod/base
