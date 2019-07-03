@@ -24,16 +24,22 @@ VNC_RO_GENERATED=false
 
 if [ -f /run/secrets/VNC_RW_PASSWORD ]; then
   VNC_RW_PASSWORD=$(head -n 1 /run/secrets/VNC_RW_PASSWORD)
+  if [ ${#VNC_RW_PASSWORD} -ge 7 ]; then
+    echo "VNC Password only support password with less than 8 characters. Your RW Password is over that limit"
+  fi
 elif [ -z "$VNC_RW_PASSWORD" ]; then
   VNC_RW_GENERATED=true
-  VNC_RW_PASSWORD=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 15)
+  VNC_RW_PASSWORD=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 7)
 fi
 
 if [ -f /run/secrets/VNC_RO_PASSWORD ]; then
   VNC_RO_PASSWORD=$(head -n 1 /run/secrets/VNC_RO_PASSWORD)
+  if [ ${#VNC_RO_PASSWORD} -ge 7 ]; then
+    echo "VNC Password only support password with less than 8 characters. Your RO Password is over that limit"
+  fi
 elif [ -z "$VNC_RO_PASSWORD" ]; then
   VNC_RO_GENERATED=true
-  VNC_RO_PASSWORD=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 15)
+  VNC_RO_PASSWORD=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 7)
 fi
 
 echo $VNC_RW_PASSWORD | vncpasswd -f > $HOME/.vnc/passwd
