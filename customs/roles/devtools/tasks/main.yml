@@ -19,3 +19,4 @@
     - curl
     - build-essential
     - genisoimage
+    - zsh
