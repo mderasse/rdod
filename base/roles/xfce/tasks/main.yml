@@ -52,7 +52,7 @@
 # Manage greybird
 - name: XFCE - Untar Greybird
   unarchive:
-    src: https://github.com/shimmerproject/Greybird/archive/master.tar.gz
+    src: https://github.com/shimmerproject/Greybird/archive/v3.22.9.tar.gz
     dest: /tmp
     remote_src: yes
 
