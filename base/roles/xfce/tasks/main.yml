@@ -62,12 +62,12 @@
     make
     make install
   args:
-    chdir: /tmp/Greybird-master
+    chdir: /tmp/Greybird-3.22.9
 
 - name: XFCE - Delete Greybird Sources
   file:
     state: absent
-    path: "/tmp/Greybird-master"
+    path: "/tmp/Greybird-3.22.9"
 
 # Manage Elementary icon pack
 - name: XFCE - Untar Elementary
